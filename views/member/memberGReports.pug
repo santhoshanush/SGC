@@ -1,0 +1,48 @@
+extends memberBase
+block title
+        | member Dashboard
+block reqCss 
+    style.
+        .center{
+      margin:0;
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      }
+        a{
+            text-decoration: none !important;
+        }
+block container
+
+    - var arr = array
+
+    .d-flex.justify-content-center
+        
+        #myPlot.center(style='width:100%;max-width:700px')
+
+        script.
+
+            const xarr = ["Other Problems","Campus Problem","Accommodation Problem","Library Problem","Financial Problem","Academic Problem"]
+            const allrep = !{arr};
+            const yarr = xarr.map((ele) => {
+                var count = 0;
+                const temp = allrep.map((dict) => {
+                    if(dict.gtype == ele){
+                        count+=1;
+                    }
+                })
+                return count;
+            });
+
+            const data = [{
+                    x:xarr.reverse(),
+                    y:yarr.reverse(),
+                    type:"bar"
+                    }];
+
+            const layout = {title:"IT Department Grievance Report"};
+
+            Plotly.newPlot("myPlot", data, layout);
+
+            

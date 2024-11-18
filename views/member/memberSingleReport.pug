@@ -1,0 +1,55 @@
+extends memberBase
+block title
+        | member Dashboard
+block reqCss 
+    style.
+        a{
+            text-decoration: none !important;
+        }
+        .spacing{
+            margin-right:3rem !important;
+
+        }
+        .signin{
+        background-color: hsla(201, 100%, 90%, 0.6);
+        width: 100%;
+        max-width: 400px;
+        min-width: 600px;
+        padding: 30px;
+        }
+        input,select{
+        height: 40px;
+        }
+        .button{
+        text-align: center;
+        margin-top: 20px;
+        }
+        .sub{
+        width: 40%;
+        min-width: 40%;
+        background-color: hsla(201, 100%, 100%, 0.6);
+        }
+block container
+    - var arr = array;
+    .d-flex.justify-content-center.mt-3
+        .signin
+            form(action="/member/report", method="POST") 
+                .form-group.mb-2
+                    label.form-label.mb-2(for='fuid') Form Id :
+                    input#fuid.form-control(type='text' value=arr._id  disabled='')
+                .form-group.mb-2
+                    label.form-label.mb-2(for='deptname') Department :
+                    input.form-control#deptname(type='text' value=arr.dept  disabled='')
+                .form-group.mb-2
+                    label.form-label.mb-2(for='doi') Date Of Issue :
+                    input.form-control#doi(type='text' value=arr.doi  disabled='')
+                .form-group.mb-2
+                    label.form-label.mb-2(for='gtype') Grievance Type :
+                    input#gtype.form-control(type='text' value=arr.gtype  disabled='')
+                .form-group.mb-2
+                    label.form-label.mb-2(for='subj') Subject :
+                    input.form-control#subj(type='text' value=arr.subj disabled="")
+                .form-group.mb-2
+                    label.form-label.mb-2(for='detrep') Detailed Report :
+                    p#detrep.text-break
+                        | #{arr.detrep}

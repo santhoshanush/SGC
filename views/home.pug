@@ -1,0 +1,42 @@
+extends base
+
+block reqStyle
+    style.
+        .center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        }
+        .button{
+        padding: 18px;
+        text-align: center;
+        font-size: 10px;
+        margin-top: 15px;
+        }
+        button{
+        height: 50px;
+        }
+        .login{
+        background-color: #e5f6ff;
+        padding: 30px;
+        width: 100%;
+        min-width: 470px;
+        min-height: 370px;
+        }
+block container 
+    form
+      .center
+        .login
+          .button
+            a(href="/student") 
+                button.btn-block.btn.btn-outline-primary.btn-lg(type='button') Student
+          .button
+            a(href="/member") 
+                button.btn-block.btn.btn-outline-primary.btn-lg(type='button') Member
+          .button
+            a(href="/admin") 
+                button.btn-block.btn.btn-outline-primary.btn-lg(type='button') Admin
+          .button
+            a(href="/feedback") 
+                button.btn-block.btn.btn-outline-primary.btn-lg(type='button') Feedback 

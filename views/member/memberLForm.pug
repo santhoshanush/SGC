@@ -1,0 +1,57 @@
+extends ../base
+block title
+    | Committe Member Login 
+block reqStyle
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+    style.
+      .center{
+      margin:0;
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      }
+      .button{
+      text-align: center;
+      margin-top: 20px;
+      }
+      button{
+      width: 40%;
+      min-width: 40%;
+      margin-top: 5px;
+      }
+      .signin{
+      background-color: hsla(201, 100%, 90%, 0.5);
+      width: 100%;
+      max-width: 400px;
+      min-width: 600px;
+      padding: 30px;
+      }
+      input{
+      height: 48px;
+      }
+block container
+    - var msg = errorMessage
+    h1.d-flex.justify-content-center.mt-4 Member Login Page
+
+    .center
+        .signin
+            .h3
+                h3.d-flex.justify-content-center WELCOME
+            form(name="members" action="/member" method="POST" )
+                .form-group
+                    label(for='memid') ID :
+                    input#memid.form-control(type='text' name="memid" placeholder='Enter ID')
+                .form-group
+                    label(for='password') Password :
+                    input#password.form-control(type='password' name="password" placeholder='Password')
+                .form-group
+                    label(for='dob') Date Of Birth :
+                    input#dob.form-control(type='date' name="dob")
+                .button
+                    button.btn.btn-outline-primary.btn-lg(type='submit') Login
+            hr
+            a.link-primary.d-flex.justify-content-end.mt-2.mb-1(href='/member/copass') Forget Password ?
+            if  err 
+                    hr
+                    pre.d-flex.justify-content-center.mt-2.mb-1.text-danger #{err} 

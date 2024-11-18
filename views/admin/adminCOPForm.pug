@@ -1,0 +1,60 @@
+extends adminBase
+block title
+        | Admin COP Form 
+block reqCss 
+    style.
+        a{
+            text-decoration: none !important;
+        }
+        .spacing{
+            margin-right:3rem !important;
+
+        }
+        .signin{
+        background-color: hsla(201, 100%, 90%, 0.6);
+        width: 100%;
+        max-width: 400px;
+        min-width: 600px;
+        padding: 30px;
+        }
+        input,select{
+        height: 40px;
+        }
+        .button{
+        text-align: center;
+        margin-top: 20px;
+        }
+          .center{
+          margin:0;
+          position: absolute;
+          top:50%;
+          left:50%;
+          transform: translate(-50%,-50%);
+          }
+        .sub{
+        width: 40%;
+        min-width: 40%;
+        background-color: hsla(201, 100%, 100%, 0.6);
+        }
+block container
+     .center       
+          .d-flex.justify-content-center.mt-3
+               .signin
+                    form(action="/admin/copform", method="POST") 
+                         .form-group.mb-2
+                              label.form-label.mb-2(for='uniqid') Unique ID :
+                              input.form-control#uniqid(type='text' placeholder="Enter Unique ID" value="" name="uniqid" required)
+                         .form-group.mb-2
+                              label.form-label.mb-2(for='dept') Department :
+                              input.form-control#dept(type='text' placeholder="Enter Department Name" value="" name="dept" required)
+                         .form-group.mb-2
+                              label.form-label.mb-2(for='passp') Secret passphrase :
+                              input.form-control#passp(type='password' placeholder="Enter Secret Passphrase" value="" name="passp" required)
+                         .form-group.mb-2
+                              label.form-label.mb-2(for='newpassw') New Password :
+                              input.form-control#newpassw(type='text' placeholder="Enter New Password" value="" name="newpassw" required)
+
+                         .button
+                              input.sub.btn.btn-outline-primary.btn-md(type="submit", value="Submit")
+
+

@@ -1,0 +1,36 @@
+extends studentBase
+block title
+        | Member Dashboard
+
+block reqCss 
+    style.
+        a{
+            text-decoration: none !important;
+        }
+        .spacing{
+            margin-right:3rem !important;
+
+        }
+        .spacings{
+            margin-left:15rem !important;
+
+        }
+block container
+    - var arr = array;
+
+    each rep in arr
+        .responses
+            .row 
+                .col-xl-12.mb-4.d-flex.justify-content-center 
+                    .card.w-50
+                        h5.card-header  #{"Response Id : " + rep._id}
+                        .card-body
+                            blockquote.blockquote.mb-0
+                                p= rep.subj
+                                footer.blockquote-footer
+                                    | #{rep.dor}  
+                                    cite(title='Source Title') #{"  &  " + rep.fuid }                   
+                        .card-footer 
+                            .d-flex.justify-content-center.p-1  
+                                a.btn.btn-outline-primary(href="/student/response/"+rep._id) Read More
+

@@ -1,0 +1,65 @@
+extends ../base
+block title
+    | Student Login Page
+block reqStyle
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+    style.
+      .center{
+      margin:0;
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      }
+      .button{
+      text-align: center;
+      margin-top: 20px;
+      }
+      button{
+      width: 40%;
+      min-width: 40%;
+      margin-top: 5px;
+      }
+      .signin{
+      background-color: hsla(201, 100%, 90%, 0.5);
+      width: 100%;
+      max-width: 400px;
+      min-width: 600px;
+      padding: 30px;
+      }
+      .h3{
+      color: rgb(94, 149, 197);
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      }
+      input{
+      height: 48px;
+      }
+block container
+    - var msg = errorMessage
+    h1.d-flex.justify-content-center.mt-4 Student Login Page
+
+
+    .center
+        .signin
+            .h3
+                h3 WELCOME
+            form(name="students" action="/student" method="POST" )
+                .form-group
+                    label(for='rollno') Roll Number :
+                    input#username.form-control(type='text' name="rollno" placeholder='Enter Roll Number')
+                .form-group
+                    label(for='password') Password :
+                    input#password.form-control(type='password' name="password" placeholder='Password')
+                .form-group
+                    label(for='dob') Date Of Birth :
+                    input#dob.form-control(type='date' name="dob")
+                .button
+                    button.btn.btn-outline-primary.btn-lg(type='submit') Login
+            hr
+            a.link-primary.d-flex.justify-content-end.mt-2.mb-1(href='/student/copass') Forget Password ?
+            if  err 
+                hr
+                pre.d-flex.justify-content-center.mt-2.mb-1.text-danger #{err} 
+                

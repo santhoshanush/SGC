@@ -1,0 +1,57 @@
+extends memberBase
+block title
+        | Member Grievance Status Form 
+block reqCss 
+    style.
+        a{
+            text-decoration: none !important;
+        }
+        .spacing{
+            margin-right:3rem !important;
+
+        }
+        .signin{
+        background-color: hsla(201, 100%, 90%, 0.6);
+        width: 100%;
+        max-width: 400px;
+        min-width: 600px;
+        padding: 30px;
+        }
+        input,select{
+        height: 40px;
+        }
+        .button{
+        text-align: center;
+        margin-top: 20px;
+        }
+          .center{
+          margin:0;
+          position: absolute;
+          top:50%;
+          left:50%;
+          transform: translate(-50%,-50%);
+          }
+        .sub{
+        width: 40%;
+        min-width: 40%;
+        background-color: hsla(201, 100%, 100%, 0.6);
+        }
+block container
+     .center       
+          .d-flex.justify-content-center.mt-3
+               .signin
+                    form(action="/member/status", method="POST") 
+                         .form-group.mb-2
+                              label.form-label.mb-2(for='formid') Form ID :
+                              input.form-control#formid(type='text' placeholder="Enter Form ID" value="" name="formid" required)
+                         .form-group.mb-2
+                              label.form-label.mb-2(for='gstatus') Grievance Status:
+                              select.form-select#gstatus(name="gstatus" requied)
+                                   option(selected='',value="") -Select-
+                                   option(value='Completed') Completed
+                                   option(value='Processing') Processing
+                                   option(value='Pending') Pending
+                         .button
+                              input.sub.btn.btn-outline-primary.btn-md(type="submit", value="Submit")
+
+

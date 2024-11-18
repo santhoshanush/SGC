@@ -1,0 +1,62 @@
+extends memberBase
+block title
+        | Member Dashboard
+
+block reqCss 
+    style.
+        a{
+            text-decoration: none !important;
+        }
+        .spacing{
+            margin-right:3rem !important;
+
+        }
+        .spacings{
+            margin-left:15rem !important;
+
+        }
+block container
+    - var arr = array;
+    - var rlo = replikeobj; 
+
+    nav.navbar.navbar-expand-lg.navbar-light.mt-2
+        .container-fluid
+            #navbarSupportedContent.collapse.navbar-collapse.mb-2.mt-1
+                form#filterform(action="/member/dashboard" , method="GET") 
+                    ul.navbar-nav.me-auto.mb-3.mt-3.spacings
+                        li.nav-item.dropdown.spacing
+                            select#gtype.form-select.form-select-sm(name="gtype")
+                                    option(selected='',value="") Grievance
+                                    option(value='Academic Problem') Academic Problem 
+                                    option(value='Financial Problem') Financial Problem
+                                    option(value='Library Problem') Library Problem
+                                    option(value='Accommodation Problem') Accommodation Problem
+                                    option(value='Campus Problem') Campus Problem
+                                    option(value='Other Problems') Other Problems
+                        li.nav-item.dropdown
+                            select#gstatus.form-select.form-select-sm(name="gstatus")
+                                    option(selected='',value="") Status
+                                    option(value='Completed') Completed
+                                    option(value='Processing') Processing
+                                    option(value='Pending') Pending
+                        li.nav-item
+                            input#filterbtn.btn.btn-outline-secondary.d-flex.spacings(type="submit", value="Filter")
+
+    each rep in arr
+        .complaints
+            .row 
+                .col-xl-12.mb-4.d-flex.justify-content-center 
+                    .card.w-50
+                        h5.card-header  #{rep.gtype + "  -  " + rep._id}
+                        .card-body
+                            blockquote.blockquote.mb-0
+                                p= rep.subj
+                                footer.blockquote-footer
+                                    | #{rep.doi}  
+                                    cite(title='Source Title') #{"  &  " + rep.gstatus }                   
+                        .card-footer 
+                            .d-flex.justify-content-center.p-1  
+                                if rep._id in rlo
+                                    button#support.btn.btn-primary(style="margin-right:2rem ;" disabled) #{rlo[rep._id]}  Supported !!!    
+                                a.btn.btn-outline-primary(href="/member/dashboard/report/"+rep._id) Read More
+
