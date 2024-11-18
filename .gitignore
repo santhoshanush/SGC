@@ -1,0 +1,6 @@
+node_modules/
+views/student/dist/
+just
+points.txt
+ps.txt
+.vscodeignore
